@@ -2,10 +2,12 @@ package test
 
 import (
 	"github.com/BurntSushi/toml"
+	"test/pkg/repository"
 )
 
 type Config struct {
-	Port string `toml:"port"`
+	Port  string `toml:"port"`
+	Mongo repository.MongoConfig
 }
 
 func NewConfig(path string) (Config, error) {

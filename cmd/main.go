@@ -5,6 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"test"
 	"test/pkg/handler"
+	"test/pkg/repository"
 )
 
 var (
@@ -21,6 +22,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("error initializing config: %s", err.Error())
 	}
+
+	db := repository.NewMongoDB(config.Mongo.URI, config.Mongo.Database)
+	print(db)
 
 	router := handler.NewHandler()
 	server := new(test.Server)
