@@ -4,13 +4,15 @@ import (
 	"github.com/gorilla/mux"
 	"io"
 	"net/http"
+	"test/pkg/service"
 )
 
 type Handler struct {
+	services *service.Service
 }
 
-func NewHandler() *Handler {
-	return &Handler{}
+func NewHandler(services *service.Service) *Handler {
+	return &Handler{services: services}
 }
 
 func (h *Handler) InitRoutes() http.Handler {

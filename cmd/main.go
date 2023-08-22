@@ -6,6 +6,7 @@ import (
 	"test"
 	"test/pkg/handler"
 	"test/pkg/repository"
+	"test/pkg/service"
 )
 
 var (
@@ -24,9 +25,10 @@ func main() {
 	}
 
 	db := repository.NewMongoDB(config.Mongo.URI, config.Mongo.Database)
-	print(db)
+	repo := repository.NewRepository(db)
+	services := service.NewService(repo)
+	router := handler.NewHandler(services)
 
-	router := handler.NewHandler()
 	server := new(test.Server)
 	log.Infof("starting server on port: %s", config.Port)
 
