@@ -4,6 +4,7 @@ import (
 	"flag"
 	log "github.com/sirupsen/logrus"
 	"test"
+	"test/pkg/handler"
 )
 
 var (
@@ -21,10 +22,11 @@ func main() {
 		log.Fatalf("error initializing config: %s", err.Error())
 	}
 
+	router := handler.NewHandler()
 	server := new(test.Server)
 	log.Infof("starting server on port: %s", config.Port)
 
-	if err := server.Run(config.Port); err != nil {
+	if err := server.Run(config.Port, router.InitRoutes()); err != nil {
 		log.Fatalf("error running server: %s", err.Error())
 	}
 }
