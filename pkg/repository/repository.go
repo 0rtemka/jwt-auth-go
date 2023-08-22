@@ -8,6 +8,7 @@ import (
 
 type User interface {
 	FindAllUsers() ([]model.User, error)
+	FindUserById(userId primitive.ObjectID) (model.User, error)
 }
 
 type Auth interface {

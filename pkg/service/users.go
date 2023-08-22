@@ -14,5 +14,5 @@ func NewUserService(repo repository.User) *UserService {
 }
 
 func (s *UserService) FindAll() ([]model.User, error) {
-	return nil, nil
+	return s.repo.FindAllUsers()
 }
