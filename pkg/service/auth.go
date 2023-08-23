@@ -54,7 +54,7 @@ func (s *AuthService) GenerateNewPair(userId string) (string, string, error) {
 	}
 	b64Token := base64.StdEncoding.EncodeToString([]byte(refreshToken))
 
-	if _, err := s.authRepo.Refresh(objId, b64Token); err != nil {
+	if _, err := s.authRepo.Refresh(objId, hashString(refreshToken)); err != nil {
 		return "", "", nil
 	}
 

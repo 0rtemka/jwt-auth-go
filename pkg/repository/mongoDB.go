@@ -13,11 +13,7 @@ func NewMongoDB(uri, dbName string) *mongo.Database {
 	if err != nil {
 		log.Fatalf("error initializing mongoDB: %s", err.Error())
 	}
-	defer func() {
-		if err := client.Disconnect(context.TODO()); err != nil {
-			log.Fatalf("error disconnecting mongoDB: %s", err.Error())
-		}
-	}()
+
 	db := client.Database(dbName)
 
 	var res bson.M

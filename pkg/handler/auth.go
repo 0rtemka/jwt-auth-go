@@ -10,6 +10,7 @@ const (
 	cookieRefreshTokenName = "refresh_token"
 	cookieMaxAge           = 3600 * 24 * 14 // 2 weeks
 	cookieDomain           = "localhost"
+	cookiePath             = "/"
 )
 
 func (h *Handler) GenerateTokens() http.HandlerFunc {
@@ -33,7 +34,7 @@ func (h *Handler) GenerateTokens() http.HandlerFunc {
 			Name:   cookieRefreshTokenName,
 			Value:  refreshToken,
 			MaxAge: cookieMaxAge,
-			Path:   r.RequestURI,
+			Path:   cookiePath,
 			Domain: cookieDomain,
 		})
 
@@ -67,7 +68,7 @@ func (h *Handler) RefreshTokens() http.HandlerFunc {
 			Name:   cookieRefreshTokenName,
 			Value:  refreshToken,
 			MaxAge: cookieMaxAge,
-			Path:   r.RequestURI,
+			Path:   cookiePath,
 			Domain: cookieDomain,
 		})
 
