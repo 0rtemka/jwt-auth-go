@@ -21,9 +21,9 @@ func (h *Handler) InitRoutes() http.Handler {
 	router.HandleFunc("/users", h.FindAllUsers()).Methods("GET")
 
 	router.HandleFunc("/auth/sign-in/{id}", h.GenerateTokens()).Methods("POST")
-	router.HandleFunc("/auth/refresh/{id}", h.RefreshTokens()).Methods("POST")
+	router.HandleFunc("/auth/refresh/{id}", h.VerifyToken(h.RefreshTokens())).Methods("POST")
 
-	router.HandleFunc("/", h.HomePage()).Methods("GET")
+	router.HandleFunc("/", h.VerifyToken(h.HomePage())).Methods("GET")
 
 	return router
 }

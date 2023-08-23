@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "64e257abeced0aeb9b550160"
+  },
+  "email": "petya@mail.com",
+  "refresh": "",
+  "name": "Petya",
+  "refresh_token": ""
+},
+{
+  "_id": {
+    "$oid": "64e26295eced0aeb9b550161"
+  },
+  "email": "vasya@mail.com",
+  "refresh": "",
+  "name": "Vasya",
+  "refresh_token": ""
+},
+{
+  "_id": {
+    "$oid": "64e2632eeced0aeb9b550162"
+  },
+  "email": "kolya@mail.com",
+  "refresh": "",
+  "name": "Kolya",
+  "refresh_token": ""
+}]
