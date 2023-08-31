@@ -23,8 +23,7 @@
 по GUID пользователя. При этом access токен отправляется в теле ответа, а refresh устанавливается в cookie 'refresh_token'.
 
 2. `POST -> http://localhost:8080/auth/refresh/{user_id}` - выполнение операции refresh на пару access, refresh токенов.
-   Refresh токен должен быть установлен в cookie 'refresh_token'. Access токен отправляется в теле ответа,
-   а refresh устанавливается в cookie.
+   Refresh токен должен быть установлен в cookie 'refresh_token', а Access токен должен быть указан в Authorization Header.
 
 ### Примеры 
 
@@ -36,9 +35,7 @@
 }
 ```
 
-`curl -XPOST -d '{
-"access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTI3NzE4MTcsImlhdCI6MTY5Mjc3MDkxNywidXNlcl9pZCI6IjY0ZTI2MzJlZWNlZDBhZWI5YjU1MDE2MiJ9.GLFduKYS9rxVgth0stMJH6Q03q6tF0jTNeb3GPw5qKPPQVUIZNiiN1z6ocdKSK1w_U3A_mpTo3g-Hx8YI4v5Aw"
-}' 'http://localhost:8080/auth/refresh/64e2632eeced0aeb9b550162'`
+`curl -XPOST -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTI3NzE4MTcsImlhdCI6MTY5Mjc3MDkxNywidXNlcl9pZCI6IjY0ZTI2MzJlZWNlZDBhZWI5YjU1MDE2MiJ9.GLFduKYS9rxVgth0stMJH6Q03q6tF0jTNeb3GPw5qKPPQVUIZNiiN1z6ocdKSK1w_U3A_mpTo3g-Hx8YI4v5Aw' 'http://localhost:8080/auth/refresh/64e2632eeced0aeb9b550162'`
 
 ```json
 {
