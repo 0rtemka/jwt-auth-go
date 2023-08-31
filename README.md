@@ -23,7 +23,8 @@
 по GUID пользователя. При этом access токен отправляется в теле ответа, а refresh устанавливается в cookie 'refresh_token'.
 
 2. `POST -> http://localhost:8080/auth/refresh/{user_id}` - выполнение операции refresh на пару access, refresh токенов.
-   Refresh токен должен быть установлен в cookie 'refresh_token', а Access токен должен быть указан в Authorization Header.
+   Refresh токен должен быть установлен в cookie 'refresh_token', а Access токен должен быть указан в Authorization Header в следующем формате:
+   `Bearer {token}`
 
 ### Примеры 
 
